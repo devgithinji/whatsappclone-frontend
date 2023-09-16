@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {BsArrowLeft, BsCheck, BsCheck2} from "react-icons/bs";
+import {BsArrowLeft, BsCheck} from "react-icons/bs";
 
 const NewGroup = ({navigateBack, createGroup}) => {
     const [name, setName] = useState('')

@@ -16,7 +16,6 @@ const AddGroupParticipants = ({navigateBack, contacts, createGroup, isCreateGrou
 
     const addParticipants = (contact) => {
         const newFilteredPart = filteredParticipants.filter(part => part.id !== contact.id)
-        console.log(newFilteredPart)
         setFilteredParticipants(newFilteredPart)
         setParticipants([...participants, contact])
     }

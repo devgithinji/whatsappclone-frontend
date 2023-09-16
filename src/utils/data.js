@@ -1,6 +1,5 @@
 import {en, Faker} from '@faker-js/faker'
 
-import React from 'react';
 import moment from "moment";
 
 const faker = new Faker({

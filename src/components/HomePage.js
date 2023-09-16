@@ -13,12 +13,16 @@ import NewGroup from "./group/NewGroup";
 
 const HomePage = () => {
     const [query, setQuery] = useState('');
-    const [chats, setChats] = useState(chatsData)
+    const [chats, setChats] = useState([])
     const [activeChat, setActiveChat] = useState(null);
     const [activeScreenLeft, setActiveScreenLeft] = useState('chat');
     const [activeScreenRight, setActiveScreenRight] = useState('default');
     const [statusView, setStatusView] = useState(false);
     const [createGroup, setCreateGroup] = useState(false)
+
+    useEffect(()=>{
+        setChats(chatsData)
+    }, [])
 
     useEffect(() => {
         const handleEscapeKey = (event) => {
@@ -34,10 +38,6 @@ const HomePage = () => {
         };
     }, []);
 
-
-    const handleSearch = () => {
-
-    }
 
     const switchToStatusList = () => {
         setActiveScreenLeft('status');
