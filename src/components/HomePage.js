@@ -81,6 +81,7 @@ const HomePage = () => {
                                     setQuery={setQuery}
                                     setProfileView={() => setActiveScreenLeft('profile')}
                                     createGroup={() => setActiveScreenLeft('add-group-participants')}
+                                    logout={() => setAuthenticated(false)}
                                     setStatusView={switchToStatusList}/>
                             }
                             {activeScreenLeft === 'profile' &&

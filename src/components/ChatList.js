@@ -6,7 +6,7 @@ import {BsFilter, BsThreeDotsVertical} from "react-icons/bs";
 import ChartCard from "./chatcard/ChartCard";
 import {Menu, MenuItem} from "@mui/material";
 
-const ChatList = ({chats, onSelectChat, query, setQuery, setProfileView, setStatusView, createGroup}) => {
+const ChatList = ({chats, onSelectChat, query, setQuery, setProfileView, setStatusView, createGroup, logout}) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -49,9 +49,9 @@ const ChatList = ({chats, onSelectChat, query, setQuery, setProfileView, setStat
                                 horizontal: 'right',
                             }}
                         >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
+                            <MenuItem onClick={setProfileView}>Profile</MenuItem>
                             <MenuItem onClick={createGroup}>Create Group</MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                            <MenuItem onClick={logout}>Log out</MenuItem>
                         </Menu>
                     </div>
 
