@@ -3,13 +3,13 @@ import {en, Faker} from '@faker-js/faker'
 import React from 'react';
 import moment from "moment";
 
-const chats = () => {
+const faker = new Faker({
+    locale: [en]
+});
+export const chats = () => {
     const chats = [];
 
     for (let i = 0; i < 20; i++) {
-        const faker = new Faker({
-            locale: [en]
-        });
         const chat = {
             username: faker.internet.userName(),
             shortMessage: faker.lorem.sentence(10),
@@ -25,6 +25,15 @@ const chats = () => {
     return chats.sort((a, b) => moment(b.timestamp).diff(a.timestamp));
 };
 
-export default chats;
+export const stories = () => {
+    const stories = [];
+    for (let i = 0; i < 20; i++) {
+        stories.push(faker.image.urlLoremFlickr())
+    }
+    return stories
+}
+
+
+
 
 
