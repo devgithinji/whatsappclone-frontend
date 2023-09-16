@@ -11,6 +11,7 @@ export const chats = () => {
 
     for (let i = 0; i < 20; i++) {
         const chat = {
+            id: i + 1,
             username: faker.internet.userName(),
             shortMessage: faker.lorem.sentence(10),
             timestamp: faker.date.recent({days: 10}).toLocaleString(),

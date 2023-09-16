@@ -8,6 +8,8 @@ import Profile from "./profile/Profile";
 import StatusList from "./status/StatusList";
 import MyStatusList from "./status/MyStatusList";
 import StatusView from "./status/StatusView";
+import AddGroupParticipants from "./group/AddGroupParticipants";
+import NewGroup from "./group/NewGroup";
 
 const HomePage = () => {
     const [query, setQuery] = useState('');
@@ -16,6 +18,7 @@ const HomePage = () => {
     const [activeScreenLeft, setActiveScreenLeft] = useState('chat');
     const [activeScreenRight, setActiveScreenRight] = useState('default');
     const [statusView, setStatusView] = useState(false);
+    const [createGroup, setCreateGroup] = useState(false)
 
     useEffect(() => {
         const handleEscapeKey = (event) => {
@@ -41,7 +44,7 @@ const HomePage = () => {
         setActiveScreenRight('status')
     }
 
-    const closeStatusList = () => {
+    const switchToDefault = () => {
         setActiveScreenLeft('chat')
 
         activeChat ? setActiveScreenRight('chat') : setActiveScreenRight('default')
@@ -54,6 +57,10 @@ const HomePage = () => {
 
     const switchToStatusView = () => {
         setStatusView(true)
+    }
+
+    const createNewGroup = () => {
+
     }
 
 
@@ -70,10 +77,17 @@ const HomePage = () => {
                                 query={query}
                                 setQuery={setQuery}
                                 setProfileView={() => setActiveScreenLeft('profile')}
+                                createGroup={() => setActiveScreenLeft('add-group-participants')}
                                 setStatusView={switchToStatusList}/>
                         }
                         {activeScreenLeft === 'profile' && <Profile navigateBack={() => setActiveScreenLeft('chat')}/>}
                         {activeScreenLeft === 'status' && <StatusList statusView={switchToStatusView}/>}
+                        {activeScreenLeft === 'add-group-participants' &&
+                            <AddGroupParticipants navigateBack={switchToDefault} contacts={chats}
+                                                  isCreateGroupMode={createGroup}
+                                                  createGroup={() => setCreateGroup(true)}/>}
+                        {createGroup &&
+                            <NewGroup navigateBack={() => setCreateGroup(false)} createGroup={createNewGroup}/>}
                     </div>
                     <div className="right w-full">
                         <div className="w-full h-full">
@@ -84,7 +98,7 @@ const HomePage = () => {
                                 (activeScreenRight === 'chat' && activeChat) && <ActiveChat {...activeChat}/>
                             }
                             {
-                                activeScreenRight === 'status' && <MyStatusList onCloseStatusList={closeStatusList}/>
+                                activeScreenRight === 'status' && <MyStatusList onCloseStatusList={switchToDefault}/>
                             }
                         </div>
                     </div>
