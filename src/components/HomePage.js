@@ -28,6 +28,7 @@ const HomePage = () => {
         const handleEscapeKey = (event) => {
             if (event.key === 'Escape') {
                 setActiveChat(null)
+                setActiveScreenRight('default')
             }
         };
 
